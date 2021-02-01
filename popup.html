@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body {
+				margin: 0px;
+				min-width: 350px;
+			}
+			.container {
+				width: 100%;
+				padding: 8px 16px 8px 16px;
+				box-sizing: border-box;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			.switch {
+				position: relative;
+				display: block;
+				height: 17px;
+				width: 30px;
+			}
+			.switch input {
+				display: none;
+			}
+			.round-slider {
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #ccc;
+				transition: 0.4s;
+			}
+			.round-slider:before {
+				position: absolute;
+				content: "";
+				height: 13px;
+				width: 13px;
+				left: 2px;
+				bottom: 2px;
+				background-color: #fff;
+				transition: 0.4s;
+			}
+			input:checked + .round-slider {
+				background-color: #2196f3;
+			}
+			input:focus + .round-slider {
+				box-shadow: 0 0 1px #2196f3;
+			}
+			input:checked + .round-slider:before {
+				transform: translateX(13px);
+			}
+			.round-slider {
+				display: box;
+				width: 30px;
+				border-radius: 34px;
+			}
+			.round-slider:before {
+				border-radius: 50%;
+			}
+			.title {
+				font-size: 17px;
+			}
+			.button {
+				position: relative;
+				background-color: #4CAF50;
+				border: none;
+				font-size: 16px;
+				color: #FFFFFF;
+				text-align: center;
+				-webkit-transition-duration: 0.4s; /* Safari */
+				transition-duration: 0.4s;
+				text-decoration: none;
+				overflow: hidden;
+				cursor: pointer;
+			}
+			.button:after {
+				content: "";
+				background: #f1f1f1;
+				display: block;
+				position: absolute;
+				padding-top: 300%;
+				padding-left: 350%;
+				margin-left: -20px !important;
+				margin-top: -120%;
+				opacity: 0;
+				transition: all 0.8s
+			}
+			.button:active:after {
+				padding: 0;
+				margin: 0;
+				opacity: 1;
+				transition: 0s
+			}
+			#on {background-color: #4CAF50;}
+			#off {background-color: #f44336;}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="title">
+				All
+			</div>
+			<div>
+				<button id='all-on' class="button">On</button>
+				<button id='all-off' class="button">Off</button>
+			</div>
+		</div>
+		<div class="container">
+			<div class="title">
+				Links
+			</div>
+			<label class="switch">
+				<input id='links' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="title">
+				Footnotes, external
+			</div>
+			<label class="switch">
+				<input id='footnotes-external' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="title">
+				Info
+			</div>
+			<label class="switch">
+				<input id='info' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="title">
+				Maintenance
+			</div>
+			<label class="switch">
+				<input id='maintenance' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="title">
+				Thumbs
+			</div>
+			<label class="switch">
+				<input id='thumbs' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="title">
+				Edit section buttons
+			</div>
+			<label class="switch">
+				<input id='edit-section-buttons' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="title">
+				Horizontal lines
+			</div>
+			<label class="switch">
+				<input id='horizontal-lines' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="title">
+				All images
+			</div>
+			<label class="switch">
+				<input id='all-images' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="title">
+				All images
+			</div>
+			<label class="switch">
+				<input id='all-images' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="title">
+				Boxes
+			</div>
+			<label class="switch">
+				<input id='boxes' class="checkbox" type="checkbox">
+				<span class="round-slider"></span>
+			</label>
+		</div>
+		<form action="https://www.paypal.com/cgi-bin/webscr" target="_blank" method="post" style="text-align: center;">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="S98PVRUXUL7Z8">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit">
+		</form>
+		<script src="popup.js"></script>
+	</body>
+</html> 

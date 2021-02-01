@@ -1,0 +1,25 @@
+{
+	"name": "ClearWiki",
+	"description" : "Remove footnotes, links, thumbs, ...",
+	"version": "_VERSION_",
+	"manifest_version": 2,
+	"browser_action": {
+		"default_popup": "popup.html",
+		"default_icon": "icon128.png"
+	},
+	"content_scripts": [
+		{
+		  "matches": ["*://*.wikipedia.org/*"],
+		  "run_at": "document_end", 
+		  "js": ["main.js"]
+		}
+	],
+	"permissions": [
+		"storage"
+    ],
+	"icons": { 
+		"16": "icon16.png",
+		"48": "icon48.png",
+		"128": "icon128.png" 
+	}
+}
