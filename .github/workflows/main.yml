@@ -36,5 +36,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./release.zip
-          asset_name: release_${{ github.run_number }}.zip
+          asset_name: release_${{ github.run_number }}.crx
           asset_content_type: application/zip
