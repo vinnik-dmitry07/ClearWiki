@@ -20,7 +20,7 @@ jobs:
           ./node_modules/.bin/babel --presets @babel/preset-env main.js --out-file main.js
           ./node_modules/.bin/babel --presets @babel/preset-env popup.js --out-file popup.js
       - name: Zip
-        run: zip release.zip --recurse-paths ./ --exclude ".git/*" ".github/*" "README.md"
+        run: zip release.zip --recurse-paths ./ --exclude ".git/*" ".github/*" "node_modules/*" "README.md"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
