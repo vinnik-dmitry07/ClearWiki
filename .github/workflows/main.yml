@@ -1,0 +1,40 @@
+name: CD
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup manifest
+        run: sed -i 's/_VERSION_/${{ github.run_number }}/g' manifest.json
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+      - name: Install Babel.js
+        run: npm install @babel/core @babel/cli @babel/preset-env
+      - name: Compile with Babel.js
+        run: |
+          ./node_modules/.bin/babel --presets @babel/preset-env main.js --out-file main.js
+          ./node_modules/.bin/babel --presets @babel/preset-env popup.js --out-file popup.js
+      - name: Zip
+        run: zip release.zip --recurse-paths ./ --exclude ".git/*" ".github/*" "README.md"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+      - name: Upload Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./release.zip
+          asset_name: release_${{ github.run_number }}.zip
+          asset_content_type: application/zip
