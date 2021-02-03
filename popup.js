@@ -1,7 +1,7 @@
 let checkboxes = document.getElementsByClassName('checkbox');
 
 function updateDataOf(checkbox) {
-	d = {};
+	let d = {};
 	d[checkbox.id] = checkbox.checked;
 	chrome.storage.local.set(d);
 }
